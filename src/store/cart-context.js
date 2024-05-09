@@ -5,6 +5,7 @@ import React, {createContext} from "react"
     addToCart: (item) =>{},
     removeFromCart: (id) =>{},
     clearCart: () =>{},
+    storingUserData: () =>{}
 })
 
 export default cartContext;

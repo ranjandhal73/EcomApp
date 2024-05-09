@@ -25,6 +25,10 @@ function Navbar() {
           <NavLink to='/about' className={({isActive}) => `${isActive ? 'text-orange-700' : 'text-white'}`}>
           <div>About</div>
           </NavLink>
+
+          <NavLink to='/contact' className={({isActive}) => `${isActive ? 'text-orange-700' : 'text-white'}`}>
+          <div>Contact</div>
+          </NavLink>
           
         </div>
         <div

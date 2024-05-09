@@ -2,6 +2,7 @@ import React, { useState} from 'react'
 import cartContext from './cart-context';
 
 function CartProvider({children}) {
+    const URL = 'https://ecom-app-ab8bb-default-rtdb.firebaseio.com/userData.json'
     const [cart, setCart] = useState([]);
 
     const addToCart = (item) =>{
@@ -16,11 +17,25 @@ function CartProvider({children}) {
         setCart([]);
     }
 
+    const storingUserData = async (user) =>{
+        const response = await fetch(URL,{
+            method: 'POST',
+            body: JSON.stringify(user),
+            headers: {
+                'Content-Type': 'application/json'
+            }
+        });
+
+        const data = await response.json();
+    }
+
     const cartValue = {
         cart: cart,
         addToCart: addToCart,
         removeFromCart: removeFromCart,
         clearCart: clearCart,
+        storingUserData: storingUserData,
+        
     }
   return (
     <cartContext.Provider value={cartValue}>
