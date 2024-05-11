@@ -10,7 +10,7 @@ function Navbar() {
   const [showCartItems, setShowCartItems] = useState(false);
   const {cart} = useContext(cartContext)
   const navigate = useNavigate();
-  const {isLoggedIn} = useContext(AuthContext)
+  const {isLoggedIn, logout} = useContext(AuthContext)
 
   useEffect(() => {
     if (isLoggedIn){
@@ -23,7 +23,9 @@ function Navbar() {
     <div className="sticky top-0 z-[10]">
       <div className="flex items-center justify-between py-4 bg-black">
         <div></div>
+        {/* {isLoggedIn && ()} */}
         <div className="flex gap-[4rem] cursor-pointer text-white text-2xl italic">
+          
           <NavLink to='/home' className={({isActive}) => `${isActive ? 'text-orange-700' : 'text-white'}`}>
           <div>Home</div>
           </NavLink>
@@ -51,8 +53,8 @@ function Navbar() {
         </div>
         <div className="mr-[2rem] hover:rounded-lg hover:bg-gray-500">
           {isLoggedIn ? 
-          <button onClick={()=>setIsLoggedIn(false)} className="text-white px-4 py-1 rounded">Logout</button> : 
-         <Link to='/login'><button onClick={()=>setIsLoggedIn(true)} className="text-white px-4 py-1 rounded">Login</button></Link>  }
+          <Link to='/login'><button onClick={()=>logout()}  className="text-white px-4 py-1 rounded">Logout</button> </Link>: 
+         <Link to='/login'><button className="text-white px-4 py-1 rounded">Login</button></Link>  }
         </div>
         </div>
         

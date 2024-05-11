@@ -1,4 +1,4 @@
-import React from 'react'
+import React, {useContext} from 'react'
 import ReactDOM from 'react-dom/client'
 import App from './App.jsx'
 import './index.css'
@@ -9,7 +9,6 @@ import Home from './pages/Home.jsx'
 import Contact from './pages/Contact.jsx'
 import Form from './components/Form.jsx'
 import AuthContextProvider from './store/AuthContext.jsx'
-
 
 const router = createBrowserRouter(
   createRoutesFromElements(
