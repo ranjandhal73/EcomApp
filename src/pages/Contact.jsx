@@ -18,34 +18,37 @@ function Contact() {
 
   return (
     <>
-        <form onSubmit={sumbitHandler}>
-            <label>
-                Name:
-                <input 
+        <form onSubmit={sumbitHandler} className='my-[4rem] flex flex-col items-center justify-center gap-4 py-[8rem] mx-[15rem]'>
+            <label className='flex items-center'>
+                <p className='pr-2 text-xl font-semibold'>Name:</p>
+                <input className='border-2 border-gray-300 px-2 font-medium py-1 hover:border-green-500 text-black'
                     type="text" 
                     value={name}
                     onChange={(e)=>setName(e.target.value)}
                 />
             </label>
 
-            <label>
-                Email:
-                <input 
+            <label className='flex items-center'>
+               <p className='pr-2 text-xl font-semibold'>Email:</p> 
+                <input className='border-2 border-gray-300 px-2 font-medium py-1 hover:border-green-500  text-black'
                     type="text" 
                     value={email}
                     onChange={(e)=>setEmail(e.target.value)}
                 />
             </label>
 
-            <label>
-                Phone:
-                <input 
+            <label className='flex items-center'>
+                <p className='pr-2 text-xl font-semibold'>Phone:</p>
+                <input className='border-2 border-gray-300 px-2 font-medium py-1 hover:border-green-500 text-black'
                     type="text"
                     value={phone}
                     onChange={(e)=>setPhone(e.target.value)}
                 />
             </label>
-            <button type='submit'>Submit</button>
+            <button 
+                className='bg-blue-700 hover:bg-blue-900  text-white font-bold px-[5rem] py-2 ml-[4rem]'
+                type='submit'
+            >Submit</button>
         </form>
     </>
   )

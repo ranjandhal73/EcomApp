@@ -1,14 +1,24 @@
-import React, { useContext, useState } from "react";
+import React, { useContext, useState, useEffect } from "react";
 import { GrCart } from "react-icons/gr";
 import CartItems from "../cart/CartItems";
 import cartContext from "../store/cart-context";
-import { NavLink } from "react-router-dom";
+import { Link, NavLink, useNavigate } from "react-router-dom";
+import { AuthContext } from "../store/auth-context";
+
 
 function Navbar() {
   const [showCartItems, setShowCartItems] = useState(false);
   const {cart} = useContext(cartContext)
- 
+  const navigate = useNavigate();
+  const {isLoggedIn} = useContext(AuthContext)
 
+  useEffect(() => {
+    if (isLoggedIn){
+       return navigate("/");
+    }
+ },[isLoggedIn]);
+
+ 
   return (
     <div className="sticky top-0 z-[10]">
       <div className="flex items-center justify-between py-4 bg-black">
@@ -31,14 +41,25 @@ function Navbar() {
           </NavLink>
           
         </div>
+        <div className="flex">
         <div
           onClick={() => setShowCartItems(true)}
           className="text-white text-2xl px-[3rem] flex"
         >
           <GrCart className=" cursor-pointer"/>
-          <p className="absolute top-1 right-[2.2rem] px-2 rounded-md bg-red-800 text-sm">{cart.length}</p>
+          <p className="absolute top-1 right-[8rem] px-2 rounded-md bg-red-800 text-sm">{cart.length}</p>
         </div>
+        <div className="mr-[2rem] hover:rounded-lg hover:bg-gray-500">
+          {isLoggedIn ? 
+          <button onClick={()=>setIsLoggedIn(false)} className="text-white px-4 py-1 rounded">Logout</button> : 
+         <Link to='/login'><button onClick={()=>setIsLoggedIn(true)} className="text-white px-4 py-1 rounded">Login</button></Link>  }
+        </div>
+        </div>
+        
       </div>
+
+      
+    
       {showCartItems && cart.length === 0 && (
         <div className='flex gap-2 absolute right-0 bg-white px-3 py-2 shadow-md shadow-gray-300'>
           <p className="">You Don't have any Items in the Cart</p>
