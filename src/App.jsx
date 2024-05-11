@@ -6,7 +6,9 @@ import { AuthContext } from "./store/auth-context.js"
 import Form from "./components/Form.jsx"
 
 function App() {
-  const {isLoggedIn} = useContext(AuthContext)
+  const {isLoggedIn, userEmail} = useContext(AuthContext)
+
+  console.log(userEmail);
   return (
     <CartProvider>
       <Navbar />

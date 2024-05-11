@@ -25,7 +25,6 @@ function Form() {
         }
 
         try {
-            console.log(url);
           const respone = await fetch(url,{
                 method: 'POST',
                 body: JSON.stringify({
@@ -42,7 +41,8 @@ function Form() {
                 console.log(err)
             }
             const data = await respone.json();
-            login(data.idToken)
+            console.log(data);
+            login(data.idToken, data.email)
         } catch (error) {
             console.log(error.message);
         }
